@@ -139,3 +139,9 @@ CACHES = {
         "LOCATION": REDIS_URL,
     }
 }
+
+REST_FRAMEWORK = {
+    "DEFAULT_THROTTLE_RATES": {
+        "test": "5/min",
+    },
+}
