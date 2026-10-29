@@ -30,10 +30,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
 
 # Application definition
 
 INSTALLED_APPS = [
+    'products',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,4 +130,12 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": REDIS_URL,
+    }
 }
